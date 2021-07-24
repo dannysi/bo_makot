@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-
+import {  createTheme,  ThemeProvider } from '@material-ui/core';
+import UsernameForm from './UsernameForm'
+import store from './Store'
+import { observer } from 'mobx-react';
 function App() {
+  // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+ 
+  const theme =
+      createTheme({
+        palette: {
+          type: 'dark'
+        },
+  })
+  
+  const page = store.userName? "Chat Page HERE" : <UsernameForm/>
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ThemeProvider theme={theme}>
+          {page}
+        </ThemeProvider>
+
       </header>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
