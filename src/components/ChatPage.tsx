@@ -1,5 +1,6 @@
 import React from "react"
 import store from "../Store";
+import chatPageStore from "./ChatPageStore"
 import "./ChatPage.scss";
 
 const isMe = (user:string) => user === store.userName
@@ -22,16 +23,15 @@ const createMessageCard = (msg:string, user:string) => {
 
 export default function ChatPage() {
     const [newMsg, setNewMsg] = React.useState('');
-    const [allMsgs, setAllMsgs] = React.useState(Array<JSX.Element>());
     const fieldRef = React.useRef<HTMLDivElement>(null);
     const enterMessage = (e, user) => {
         e.preventDefault();
         const elem = createMessageCard(newMsg, user)
-        setAllMsgs(allMsgs.concat(elem));
+        chatPageStore.addMsg(elem);
         setNewMsg("");
-        
+        console.log(chatPageStore.allMsgs)        
     }
-    const messagesComp = <div className="messages" ref={fieldRef}>{allMsgs}</div>
+    const messagesComp = <div className="messages" ref={fieldRef}>{chatPageStore.allMsgs}</div>
     
     React.useEffect(() => {
         fieldRef.current?.lastElementChild?.scrollIntoView({

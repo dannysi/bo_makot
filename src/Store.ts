@@ -8,7 +8,6 @@ class Store {
 
     setUserName(userName:string) {
         this.userName = userName
-        console.log("username was set")
     }
 }
 
