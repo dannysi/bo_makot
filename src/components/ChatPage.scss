@@ -1,0 +1,108 @@
+$pink: #ffd6d6;
+$blue: #3794ff;
+
+.messages {
+    min-height: calc(100vh - 100px);
+    overflow-y: scroll;
+    overflow-x:visible;
+    display: flex;
+    flex-direction:  column;
+    align-items: center;
+    align-items: center;
+    width: 90%;
+    background-color: $pink;
+    color: black;
+    font-size: 17px;
+    
+  }
+  
+  .footer {
+    width: 90%;  
+    .controls {
+      display: flex;
+      width: 100%;
+      flex-grow: 1;
+      align-items: flex-end;
+    
+      input,
+      button {
+        height: 40px;
+        padding: 0 15px;
+        box-sizing: border-box;
+        box-shadow: 0 1px 3px 1px rgba(36, 91, 140, 0.15);
+        border: none;
+        margin-top: 8px;
+      }
+    
+      input {
+        // border-radius: 9999px;
+        background: $pink;
+        flex-grow: 1;
+        // margin-right: 15px;
+      }
+    
+      button {
+        background: #3794ff;
+        border-radius: 3px;
+        color: white;
+        font: inherit;
+        font-size: 14px;
+        margin-left: 8px;
+      }
+    }
+  }
+  
+.chat {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.message {
+    position: relative;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 3px;
+    filter: drop-shadow(0 1px 2px rgba(36, 91, 140, 0.3));
+    margin-bottom: 8px;
+  
+    max-width: 50%;
+    align-self: flex-start;
+    margin-left: 20px;
+
+    .username {
+        font-size: 12px
+    }
+
+    &.with-arrow {
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translateX(-10px);
+          width: 0; 
+          height: 0; 
+          border-bottom: 17px solid transparent; 
+          border-right: 17px solid white; 
+        }
+      }
+    
+      &.self {
+        background: $blue;
+        color: white;
+        align-self: flex-end;
+        margin-right: 20px;
+        &.with-arrow {
+          &:before {
+            left: initial;
+            right: 0;
+            transform: translateX(10px);
+            border-right: 0;
+            border-left: 17px solid $blue; 
+          }
+        }
+      }
+}

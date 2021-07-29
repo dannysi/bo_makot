@@ -1,9 +1,6 @@
 import { Button, TextField } from "@material-ui/core"
 import React from "react"
-import store from './Store'
-
-
-
+import store from '../Store'
 
 function UsernameForm() {
     const [username, setUsername] = React.useState('');
